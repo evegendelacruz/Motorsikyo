@@ -35,7 +35,7 @@ const Profile = ({ navigation }) => {
         source={profile}
         style={[
           styles.profileImage,
-          { borderColor: isDarkMode ? "#bbb" : "#0f55e3" }, // Change border color based on dark mode
+          { borderColor: isDarkMode ? "#bbb" : "#0f55e3" }, 
         ]}
       />
       <Text style={[styles.name, isDarkMode && styles.darkText]}>
@@ -141,15 +141,15 @@ const Profile = ({ navigation }) => {
         style={[styles.button, isDarkMode && styles.darkButton]}
       >
         <Ionicons
-          name="settings-outline"
-          size={21}
+          name="exit-outline"
+          size={24}
           color={isDarkMode ? "white" : "gray"}
           marginLeft={50}
         />
         <Text
           style={[
             styles.buttonLabel,
-            { marginLeft: 23, color: isDarkMode ? "white" : "black" },
+            { marginLeft: 21, color: isDarkMode ? "white" : "black" },
           ]}
         >
           Sign Out
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   buttonLabel: {
     color: "black",
-    marginLeft: 8,
+    marginLeft: 5,
     fontFamily: "Poppins",
     fontSize: 16,
   },
