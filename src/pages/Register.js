@@ -9,6 +9,10 @@ const Register = ({ navigation }) => {
   const logo = require("../../assets/Logo.png");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [sex, setSex] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [city, setCity] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [currentAddress, setCurrentAddress] = useState("");
   const [email, setEmail] = useState("");
@@ -88,6 +92,80 @@ const Register = ({ navigation }) => {
               style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
             />
             <TextInput
+              placeholder="Sex"
+              value={sex}
+              mode="outlined"
+              activeOutlineColor="green"
+              outlineColor="#a6a6a6"
+              textColor="black"
+              onChangeText={setSex}
+              right={
+                <TextInput.Icon 
+                  icon={"chevron-down"} 
+                  color="gray" 
+                />
+              }
+              style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
+            />
+            <TextInput
+              placeholder="Country"
+              value={country}
+              mode="outlined"
+              activeOutlineColor="green"
+              outlineColor="#a6a6a6"
+              textColor="black"
+              onChangeText={setCountry}
+              right={
+                <TextInput.Icon 
+                  icon={"chevron-down"} 
+                  color="gray"  
+                />
+              }
+              style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
+            />
+            <TextInput
+              placeholder="Region"
+              value={region}
+              mode="outlined"
+              activeOutlineColor="green"
+              outlineColor="#a6a6a6"
+              textColor="black"
+              onChangeText={setRegion}
+              right={
+                <TextInput.Icon 
+                  icon={"chevron-down"} 
+                  color="gray" 
+                />
+              }
+              style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
+            />
+            <TextInput
+              placeholder="City/Municipality"
+              value={city}
+              mode="outlined"
+              activeOutlineColor="green"
+              outlineColor="#a6a6a6"
+              textColor="black"
+              onChangeText={setCity}
+              right={
+                <TextInput.Icon 
+                  icon={"chevron-down"} 
+                  color="gray" 
+                />
+              }
+              style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
+            />
+            <TextInput
+                placeholder="Current Address"
+                value={currentAddress}
+                mode="outlined"
+                activeOutlineColor="green"
+                outlineColor="#a6a6a6"
+                textColor="black"
+                onChangeText={setCurrentAddress}
+                style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
+              />
+            <TextInput
               placeholder="+63 | Phone Number"
               value={phoneNumber}
               mode="outlined"
@@ -97,16 +175,6 @@ const Register = ({ navigation }) => {
               onChangeText={handlePhoneNumberChange}
               style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
               maxLength={10} // Limit input to 10 characters
-            />
-            <TextInput
-              placeholder="Current Address"
-              value={currentAddress}
-              mode="outlined"
-              activeOutlineColor="green"
-              outlineColor="#a6a6a6"
-              textColor="black"
-              onChangeText={setCurrentAddress}
-              style={[registerStyle.textInput, { fontFamily: "PoppinsBold" }]}
             />
             <TextInput
               placeholder="Email"
