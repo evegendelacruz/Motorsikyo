@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "../styles/styles";
 import { TextInput, Button} from "react-native-paper";
-import Ionicons from "@expo/vector-icons/Ionicons"; 
+import Ionicons from "@expo/vector-icons/Ionicons";
+import ReturnButtons from "../components/returnButtons";  
 
 const ForgotPassword = ({ navigation }) => {
   const logo = require("../../assets/ForgotPassword.png");
@@ -11,28 +12,13 @@ const ForgotPassword = ({ navigation }) => {
   const [isRegisterPressed, setIsRegisterPressed] = useState(false);
   return (
     <SafeAreaView style={forgotStyle.container}>
-      <View style={forgotStyle.iconContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={{
-            marginTop: -170,
-            marginBottom: -80,
-            marginLeft: -190,
-            padding: 40,
-            alignItems: "flex-start",
-            justifyContent: "center",
-            position: "sticky",
-          }}
-        >
-          <Ionicons name="arrow-back-outline" size={25} color="white" />
-        </TouchableOpacity>
-      </View>
+      <ReturnButtons onPress={() => navigation.goBack()} />
       <View>
         <Text style={[forgotStyle.headingTitle, {alignSelf:'center', marginBottom: 1, marginTop:-70}]}>
           Forgot Password
         </Text>
         <Text style={[styles.subheadingTitle, {marginLeft: 22, marginRight: 22, textAlign: 'justify', marginBottom: 10, fontSize:12}]}>
-        Enter the email address or phone number associated with your account, and we will send a One-Time Password (OTP) to help you reset your password and recover your account.
+        Please enter your email address to receive instructions for resetting your password.
         </Text>
         <Image source={logo} style={[styles.logoImage, { width: 190, height: 190 }]} />
       </View>

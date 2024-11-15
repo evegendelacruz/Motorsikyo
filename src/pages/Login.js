@@ -87,7 +87,7 @@ const Login = ({ navigation }) => {
         <View style={{ alignItems: 'center' }}>
           <Button
             mode="elevated"
-            onPress={() => navigation.navigate("Profile")}
+            onPress={() => navigation.navigate("Dashboard")}
             onPressIn={() => setIsLoginPressed(true)} 
             onPressOut={() => setIsLoginPressed(false)} 
             buttonColor={isLoginPressed ? "#bbeda6" : "#46d808"} 

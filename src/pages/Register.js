@@ -4,6 +4,8 @@ import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { TextInput, Button, Checkbox } from "react-native-paper";
 import styles from "../styles/styles";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import ReturnButtons from "../components/returnButtons";
+import { supabase } from '../lib/supabase';
 
 const Register = ({ navigation }) => {
   const logo = require("../../assets/Logo.png");
@@ -42,27 +44,12 @@ const Register = ({ navigation }) => {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
+      <ReturnButtons onPress={() => navigation.goBack()} />
         <ScrollView 
           style={styles.scrollView} 
           contentContainerStyle={registerStyle.scrollContent} 
           keyboardShouldPersistTaps="handled" 
         >
-            <View style={styles.iconContainer}>
-            <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={{
-                marginTop: -40,
-                marginBottom: -80, 
-                marginLeft: -35,
-                padding: 40, 
-                alignItems: 'flex-start',
-                justifyContent: 'center',
-                position: 'sticky'
-                }}
-            >
-                <Ionicons name="arrow-back-outline" size={25} color="white" />
-            </TouchableOpacity>
-            </View>
           <Image source={logo} style={[styles.logoImage, { width: 150, height: 150 }]} />
           <Text style={[styles.headingTitle, { textAlign: 'center' }]}>
             Create an Account
@@ -235,21 +222,21 @@ const Register = ({ navigation }) => {
               }}
             />
             <Text style={registerStyle.checkboxLabel}>
-              I agree to the terms and conditions.
+              By proceeding, I agree with the Terms and Conditions.
             </Text>
           </View>
 
           <View style={{ alignItems: 'center' }}>
             <Button
               mode="elevated"
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("DeviceReg")}
               onPressIn={() => setIsRegisterPressed(true)}
               onPressOut={() => setIsRegisterPressed(false)}
-              buttonColor={isRegisterPressed ? "#e6d2a2" : "#ffb600"}
+              buttonColor={isRegisterPressed ? "#bbeda6" : "#46d808"}
               labelStyle={{ fontSize: 18, textAlign: 'center', color: 'white', fontFamily: "PoppinsBold" }} 
               style={{ paddingVertical: 7, paddingHorizontal: 5, margin: 10, borderRadius: 5, width: 290, height: 50 }}
             >
-              REGISTER
+              PROCEED
             </Button>
           </View>
         </ScrollView>

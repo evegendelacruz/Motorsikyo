@@ -9,6 +9,83 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins'
   },
 
+  insideContainer:{
+    flex: 1,
+    backgroundColor: '#f1f9ff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'Poppins',
+  },
+
+  insideHeaderCon:{
+    backgroundColor:'#0f55e3',
+    width:'100%',
+    height: '20%',
+    flexDirection:'row',
+    justifyContent:'center',
+    alignItems: 'flex-end',
+  },
+
+  insideHeader:{
+    fontFamily:'PoppinsBold',
+    color: 'white',
+    fontSize: 18,
+    marginBottom: 20,
+    letterSpacing: 2,
+  },
+
+  deviceControllerCon: {
+    backgroundColor: 'white',
+    width: 330,
+    padding: 10,
+    borderColor: '#ededed',
+    borderWidth: 1,
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+
+  deviceControllerTitle: {
+    fontFamily: 'Poppins',
+    fontSize: 16,
+    textAlign: 'left',
+  },
+
+  deviceControllerSubtitle: {
+    fontFamily: 'Poppins',
+    fontSize: 12,
+    color: '#555',
+    textAlign: 'left',
+    marginLeft: 40,
+    alignItems: 'flex-start'
+  },
+
+  buttonGallery: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    marginHorizontal: 15
+  },
+  
+  galleryButton: {
+    backgroundColor: 'white',
+    width: '48%', 
+    padding: 15,
+    borderRadius: 10,
+    borderColor: '#ededed',
+    borderWidth: 1,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  
+  galleryButtonText: {
+    marginTop: 10,
+    fontFamily: 'Poppins',
+    fontSize: 12,
+    color: '#555',
+    textAlign: 'center',
+  },
+  
   header: {
     color: 'white',
     alignItems: 'center',
@@ -67,13 +144,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center',
     fontFamily: "Poppins",
+    marginTop: -10
   },
   checkboxLabel: {
     color: 'white', 
     marginLeft: 8,
-    marginBottom: -2,
+    marginTop: 15,
     fontFamily: "Poppins", 
-    fontSize: 13, 
+    fontSize: 12, 
     marginLeft:-1
   },
 
