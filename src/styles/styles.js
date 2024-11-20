@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 
   pageTitle: {
     fontFamily: 'PoppinsBold',
-    marginTop: 20,
+    marginTop: 15,
     color: 'white',
     fontSize: 25,
     marginLeft: -210,
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins",
     marginTop: -10
   },
+
   checkboxLabel: {
     color: 'white', 
     marginLeft: 8,
@@ -154,10 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 12, 
     marginLeft:-1
   },
-
-  iconContainer: {
-
-  },
+  
 });
 
 export default styles;

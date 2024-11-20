@@ -1,17 +1,81 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, Image, View, TouchableOpacity, Keyboard, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TextInput, Button, PaperProvider } from "react-native-paper";
 import styles from "../styles/styles";
 import {MaterialIcons} from '@expo/vector-icons';
 import ReturnButtons from "../components/returnButtons"; 
+import { supabase } from "../utils/supabase";
 
 const DeviceReg = ({ navigation }) => {
+  const [logoSize, setLogoSize] = useState(150);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false); 
+  useEffect(() => {
+    // Listener for keyboard events
+    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
+      setLogoSize(50); // Size when keyboard is visible
+      setIsKeyboardVisible(true); // Set keyboard visible state
+    });
+    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
+      setLogoSize(150); // Original size
+      setIsKeyboardVisible(false); // Reset keyboard visible state
+    });
+    // Cleanup listeners on unmount
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  const handleDeviceRegistration = async () => {
+    setIsLoading(true);
+    // Dismiss the keyboard when the button is clicked
+    Keyboard.dismiss();
+    // Input validation: Check if deviceID is provided
+    if (!deviceID.trim()) {
+      Alert.alert("Error", "Please enter a valid Device ID.");
+      return;
+    }
+  
+    try {
+      // Query the device table in the public schema
+      const { data, error } = await supabase
+        .from("device") // Table name
+        .select("*") // Selecting all columns, you can modify to 'device_registered' if you only want that column
+        .eq("device_registered", deviceID); // Filter for rows where device_registered matches the deviceID
+  
+      // Log the response for debugging purposes
+      console.log("Query Result:", data);
+      console.log("Error:", error);
+  
+      if (error) {
+        console.error("Error fetching device ID:", error);
+        Alert.alert("Error", "An unexpected error occurred. Please try again.");
+        return;
+      }
+  
+      // Check if the data contains any matches
+      if (data && data.length > 0) {
+        showModal(); // Show success modal
+      } else {
+        // No match found for the provided device ID
+        Alert.alert("Error", "Device ID Invalid. Please enter a valid Device ID.");
+      }
+    } catch (err) {
+      // Catch any unexpected errors
+      console.error("Device registration error:", err);
+      Alert.alert("Error", "An unexpected error occurred. Please try again.");
+    }
+  };
+  
+  
+  
   const logo = require("../../assets/Logo.png");
   const [deviceID, setDeviceID] = useState("");
   const [isRegisterPressed, setIsRegisterPressed] = useState(false);
   const [isProceedPressed, setIsProceedPressed] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -98,13 +162,14 @@ const DeviceReg = ({ navigation }) => {
           />
         </View>
         
-        <View style={{ alignItems: 'center', marginTop: 10, marginBottom: 140 }}>
+        <View style={{ alignItems: 'center', marginTop: 10, marginBottom: isKeyboardVisible ? -60 : 140 }}>
           <Button
             mode="elevated"
-            onPress={showModal}
+            onPress={handleDeviceRegistration}
             onPressIn={() => setIsRegisterPressed(true)}
             onPressOut={() => setIsRegisterPressed(false)}
             buttonColor={isRegisterPressed ? "#bbeda6" : "#46d808"}
+            loading={isLoading}
             labelStyle={{
               fontSize: 18,
               textAlign: 'center',
